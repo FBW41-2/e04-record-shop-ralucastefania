@@ -1,3 +1,10 @@
 {
-  "records": []
+  "records": [
+    {
+      "title": "My record 2 changed",
+      "year": 2007,
+      "author": "Billy Bang",
+      "id": "1618931759773"
+    }
+  ]
 }

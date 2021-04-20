@@ -1,0 +1,31 @@
+GET http://localhost:3000/records/
+
+###
+
+POST  http://localhost:3000/records/
+Content-Type: application/json
+
+{
+    "title": "My record 2",
+    "year": 2007,
+    "author": "Billy Bang"
+}
+
+###
+
+PUT http://localhost:3000/records/1618931759773
+Content-Type: application/json
+
+{
+    "title": "My record 2 changed",
+    "year": 2007,
+    "author": "Billy Bang"
+}
+
+###
+
+GET http://localhost:3000/records/161893175977
+
+###
+
+DELETE http://localhost:3000/records/1618931739437

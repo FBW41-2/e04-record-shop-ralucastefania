@@ -19,3 +19,28 @@ exports.addRecord = (req, res, next) => {
 
     res.status(200).send(record);
 }
+
+exports.getRecordByID = (req, res) => {
+    const record = db.get("records").find({ id: req.params.id });
+    res.status(200).send(record)
+}
+
+exports.putRecordByID = (req, res) => {
+  db.get("records").find({ id: req.params.id }).assign(req.body).write()
+  const record = db.get("records").find({ id: req.params.id })
+  res.status(200).send(record);
+};
+
+exports.deleteRecordByID = (req, res) => {
+  db.get("records").remove({ id: req.params.id }).write();
+  res.status(200).send();
+};
+
+exports.checkIdMiddleware = (req, res, next) => {
+    const record = db.get('records').find({id: req.params.id}).value()
+    if(record) {
+        next()
+    } else {
+        res.status(404).send()
+    }
+}
