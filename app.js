@@ -10,6 +10,7 @@ const FileSync = require('lowdb/adapters/FileSync');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const recordsRouter = require('./routes/records');
+const ordersRouter = require('./routes/orders');
 const { setCors } = require("./middleware/security");
 
 /** INIT */
@@ -39,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/records', recordsRouter);
+app.use('/orders', ordersRouter)
 
 /** EXPORT PATH */
 module.exports = app;

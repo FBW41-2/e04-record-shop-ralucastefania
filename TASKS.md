@@ -18,7 +18,7 @@ After we introduce the above requests for our record store we need to do some er
 
 1. Please create three more endpoints (routes) for the record data model
 
-   - `records/:id` -> a `GET` that will return a record based on the `id`
+   - `records` -> a `GET` that will return a record based on the `id`
    - `records/:id` -> a `PUT` that will update a record based on the `id`
    - `records/:id` -> a `DELETE` that will delete a record based on the `id`
 
