@@ -15,12 +15,25 @@ exports.getUserByID = (req, res, next) => {
 
 exports.addUser = (req, res, next) => {
       const user = req.body;
-      db.get('users').push(user)
-      .last()       
-      .assign({ id: Date.now().toString() })
+      db.get('users').push({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: req.body.password
+      })
       .write()
       res.status(200).send(user);
 }
+exports.createRecords = function (req, res) {
+  db.get("records")
+    .push({
+      name: req.body.name,
+      title: req.body.title,
+      year: req.body.year,
+    })
+    .write();
+  res.redirect("/api/records");
+};
 
 exports.updateUser = (req, res, next) => {
       db.get('users').find({id}).assign(req.body).write()
