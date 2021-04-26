@@ -32,6 +32,7 @@ async function connectDB() {
   try {
     await client.connect();
     app.locals.db = client.db("record-shop");
+    client.db().collection('records').find().toArray()
     await listDatabases(client);
   } catch (error) {
   } finally {
