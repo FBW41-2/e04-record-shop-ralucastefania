@@ -31,6 +31,18 @@
       "email": "lolito@gmail.com",
       "pass": 2019,
       "id": "1568627672633"
+    },
+    {
+      "username": "Trilulilu",
+      "email": "trilulilu@trilulilu.com",
+      "pass": 1234,
+      "id": "1619446894637"
+    },
+    {
+      "username": "Piscotila",
+      "email": "piscotila@piscotila.com",
+      "pass": 1234,
+      "id": "1619446927258"
     }
   ],
   "orders": []
