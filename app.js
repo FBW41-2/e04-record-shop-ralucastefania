@@ -20,14 +20,15 @@ const app = express();
 /** LOGGING */
 app.use(logger("dev"));
 
+//ENV variable
+const dBURL = process.env.DB_URL;
+const dBPassword = process.env.DB_PASSWORD;
+const dBUser = process.env.DB_USER;
+
 /** CONNECT TO MONGODB **/
 async function connectDB() {
-  const url =
-    "mongodb+srv://Raluca:7HFnyNIFLcH57sMF@cluster0.gdgwl.mongodb.net/record-shop?retryWrites=true&w=majority";
-  const client = new MongoClient(url, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-  });
+  const url = `mongodb+srv://${dBUser}:${dBPassword}@${dBURL}`;
+  const client = new MongoClient(url);
 
   try {
     await client.connect();
@@ -48,15 +49,6 @@ async function listDatabases(client) {
 
 connectDB().catch(console.error);
 
-/** SETTING UP LOWDB */
-// const adapter = new FileSync('data/db.json');
-// const db = low(adapter);
-// db.defaults({
-//     records: [],
-//     users: [],
-//     orders: []
-// }).write();
-
 /** REQUEST PARSERS */
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -70,7 +62,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/records", recordsRouter);
-app.use("/orders", ordersRouter);
+// app.use("/orders", ordersRouter);
 
 /** ERROR HANDLING */
 app.use(function (req, res, next) {
